@@ -4,8 +4,8 @@ import './App.scss'
 import { Movie, movies } from './movies'
 
 function App() {
-  const [leftList, setLeftList] = useState(movies)
-  const [rightList, setRightList] = useState([])
+  const [leftList, setLeftList] = useState<Movie[]>(movies)
+  const [rightList, setRightList] = useState<Movie[]>([])
   const [search, setSearch] = useState('')
 
   const onAddClick = (movie: Movie) => {
