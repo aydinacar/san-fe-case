@@ -1,8 +1,8 @@
 import { differenceInDays, fromUnixTime } from 'date-fns'
 import { useState } from 'react'
 import './App.scss'
-import { Movie, movies } from './movies'
-
+import { movies } from './movies'
+import { Movie } from './types'
 function App() {
   const [leftList, setLeftList] = useState<Movie[]>(movies)
   const [rightList, setRightList] = useState<Movie[]>([])
