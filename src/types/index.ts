@@ -6,3 +6,9 @@ export type Movie = {
   release_date: number
   genres: string[]
 }
+
+export interface MovieItemProps {
+  movie: Movie
+  onAddClick: (movie: Movie) => void
+  mode: 'add' | 'remove'
+}

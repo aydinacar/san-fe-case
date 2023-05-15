@@ -1,9 +1,9 @@
-import { differenceInDays, fromUnixTime } from 'date-fns'
 import { useState } from 'react'
 import './App.scss'
 import { movies } from './movies'
 import { Movie } from './types'
 import MovieInput from './components/MovieInput'
+import MovieItem from './components/MovieItem'
 function App() {
   const [leftList, setLeftList] = useState<Movie[]>(movies)
   const [rightList, setRightList] = useState<Movie[]>([])
@@ -38,32 +38,12 @@ function App() {
           }
 
           return (
-            <div
-              id="movie"
-              style={{ width: 400, height: 100, border: '1px solid black' }}
-              onMouseOver={e => {
-                const el = e.currentTarget
-                let l = 0
-                function updateColor(newl: number) {
-                  l = newl
-                  el.style.backgroundColor = `#64c864${20 + l * 5}`
-                  if (l < 10) {
-                    setTimeout(() => updateColor(l + 1), 25)
-                  }
-                }
-                setTimeout(() => updateColor(l + 1), 25)
-              }}
-              onMouseLeave={e => (e.currentTarget.style.backgroundColor = '#64c86420')}
-            >
-              <div id="movie-title">{movie.title}</div>
-              <div>Release date: {differenceInDays(new Date(), fromUnixTime(movie.release_date))} days ago</div>
-              <button
-                id="add-button"
-                onClick={() => onAddClick(movie)}
-              >
-                Add
-              </button>
-            </div>
+            <MovieItem
+              mode="add"
+              key={movie.id}
+              movie={movie}
+              onAddClick={() => onAddClick(movie)}
+            />
           )
         })}
       </div>
@@ -74,32 +54,12 @@ function App() {
           }
 
           return (
-            <div
-              id="movie"
-              style={{ width: 400, height: 100, border: '1px solid black' }}
-              onMouseOver={e => {
-                const el = e.currentTarget
-                let l = 0
-                function updateColor(newl: number) {
-                  l = newl
-                  el.style.backgroundColor = `#c86464${20 + l * 5}`
-                  if (l < 10) {
-                    setTimeout(() => updateColor(l + 1), 25)
-                  }
-                }
-                setTimeout(() => updateColor(l + 1), 25)
-              }}
-              onMouseLeave={e => (e.currentTarget.style.backgroundColor = '#c8646420')}
-            >
-              <div id="movie-title">{movie.title}</div>
-              <div>Release date: {differenceInDays(new Date(), fromUnixTime(movie.release_date))} days ago</div>
-              <button
-                id="remove-button"
-                onClick={() => onRemoveClick(movie)}
-              >
-                Remove
-              </button>
-            </div>
+            <MovieItem
+              mode="remove"
+              key={movie.id}
+              movie={movie}
+              onAddClick={() => onRemoveClick(movie)}
+            />
           )
         })}
       </div>
