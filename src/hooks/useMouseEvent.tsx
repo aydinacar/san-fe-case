@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
-const useMouseEvent = (mode: 'add' | 'remove') => {
+import { ModeType } from '../types'
+const useMouseEvent = (mode: ModeType) => {
   const [color, setColor] = useState(mode === 'add' ? '#64c86420' : '#c8646420')
   const el = useRef<HTMLDivElement>(null)
   useEffect(() => {

@@ -12,3 +12,4 @@ export interface MovieItemProps {
   onAddClick: (movie: Movie) => void
   mode: 'add' | 'remove'
 }
+export type ModeType = 'add' | 'remove'
