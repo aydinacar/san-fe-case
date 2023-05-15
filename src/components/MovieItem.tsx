@@ -7,13 +7,17 @@ const MovieItem = ({ movie, onAddClick, mode }: MovieItemProps) => {
 
   return (
     <div
+      className="movie-item"
       ref={el}
       id="movie"
-      style={{ width: 400, height: 100, border: '1px solid black', backgroundColor: color }}
+      style={{ backgroundColor: color }}
     >
       <div id="movie-title">{movie.title}</div>
       <div>Release date: {differenceInDays(new Date(), fromUnixTime(movie.release_date))} days ago</div>
       <button
+        style={{
+          backgroundColor: mode === 'add' ? '#4CAF50' : '#f44336'
+        }}
         id={mode === 'add' ? 'add-button' : 'add-remove'}
         onClick={() => onAddClick(movie)}
       >

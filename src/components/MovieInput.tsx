@@ -5,7 +5,7 @@ interface MovieInputProps {
 
 const MovieInput = ({ search, setSearch }: MovieInputProps) => {
   return (
-    <div>
+    <div className="movie-input">
       <input
         placeholder="Type for searcing..."
         value={search}

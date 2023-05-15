@@ -32,29 +32,36 @@ function App() {
 
   return (
     <div className="App">
-      <div id="left-movie-container">
-        <MovieInput
-          search={search}
-          setSearch={e => setSearch(e)}
-        />
-        {leftList.map(movie => (
-          <MovieItem
-            mode="add"
-            key={movie.id}
-            movie={movie}
-            onAddClick={() => onAddClick(movie)}
+      <div className="container">
+        <div className="movie-input-container">
+          <div className="title">My List</div>
+          <MovieInput
+            search={search}
+            setSearch={e => setSearch(e)}
           />
-        ))}
-      </div>
-      <div id="right-movie-container">
-        {rightList.map(movie => (
-          <MovieItem
-            mode="remove"
-            key={movie.id}
-            movie={movie}
-            onAddClick={() => onRemoveClick(movie)}
-          />
-        ))}
+        </div>
+        <div className="movies-container">
+          <div id="left-movie-container">
+            {leftList.map(movie => (
+              <MovieItem
+                mode="add"
+                key={movie.id}
+                movie={movie}
+                onAddClick={() => onAddClick(movie)}
+              />
+            ))}
+          </div>
+          <div id="right-movie-container">
+            {rightList.map(movie => (
+              <MovieItem
+                mode="remove"
+                key={movie.id}
+                movie={movie}
+                onAddClick={() => onRemoveClick(movie)}
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   )
