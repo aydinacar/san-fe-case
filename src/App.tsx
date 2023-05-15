@@ -3,6 +3,7 @@ import { useState } from 'react'
 import './App.scss'
 import { movies } from './movies'
 import { Movie } from './types'
+import MovieInput from './components/MovieInput'
 function App() {
   const [leftList, setLeftList] = useState<Movie[]>(movies)
   const [rightList, setRightList] = useState<Movie[]>([])
@@ -27,13 +28,10 @@ function App() {
   return (
     <div className="App">
       <div id="left-movie-container">
-        <div>
-          <input
-            placeholder="Type for searcing..."
-            value={search}
-            onChange={e => setSearch(e.target.value)}
-          />
-        </div>
+        <MovieInput
+          search={search}
+          setSearch={e => setSearch(e)}
+        />
         {leftList.map(movie => {
           if (!movie.title.includes(search)) {
             return false
